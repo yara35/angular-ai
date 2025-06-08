@@ -1,0 +1,26 @@
+.not-found-wrapper {
+  height: 100vh;
+  background-color: #fdfdfd;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #666;
+}
+a.btn {
+  background: #7a614d;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.4s ease, transform 0.2s ease;
+  padding: 10px;
+  color: white;
+}
+a.btn:hover {
+  background: #6a5543;
+  transform: scale(1.02);
+}

@@ -1,0 +1,30 @@
+<div class="container my-5">
+  <h2 class="text-center mb-4">PDF Summarizer</h2>
+
+  <!-- Upload PDF -->
+  <input type="file" (change)="onFileSelected($event)" accept="application/pdf" class="form-control mb-4" />
+
+  <!-- Summarize button -->
+  <button class="btn btn-primary mb-4" (click)="onSummarizeClicked()" [disabled]="!extractedText || loading">
+    Summarize PDF
+  </button>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="loading" class="text-center mt-4">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2">Processing, please wait...</p>
+  </div>
+
+  <!-- Summary Output -->
+  <div *ngIf="summaryText && !loading" class="summary-box mt-4">
+    <h4>Summary:</h4>
+    <p>{{ summaryText }}</p>
+  </div>
+
+  <button 
+  class="btn btn-success mt-3" 
+  (click)="downloadSummaryAsPDF()" 
+  [disabled]="!summaryText">
+  Download Summary as PDF
+</button>
+</div>

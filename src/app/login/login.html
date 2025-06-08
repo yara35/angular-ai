@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow p-4">
+        <h3 class="text-center mb-4">Welcome Back</h3>
+        <h6 class="text-center mb-4">login to your account</h6>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onsubmit()">
+          <div class="mb-3">
+            <label>Email</label>
+            <input type="email" class="form-control" formControlName="email">
+            <div *ngIf="f['email'].invalid && f['email'].touched" class="text-danger">
+              Valid email is required
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            <div *ngIf="f['password'].touched && f['password'].invalid" class="text-danger">
+              Minimum 6 characters
+            </div>
+          </div>
+          <div  *ngIf="showError" [class.hide]="!showError" class="custom-error text-center">
+            {{ errorMessage }}
+          </div>
+
+          <button class="btn btn-success w-100" [disabled]="loginForm.invalid">Login</button>
+        </form>
+
+        <p class="text-center mt-3">
+          Don't have an account?
+          <a routerLink="/signup">Sign Up</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+/* ---------- Base Styles ---------- */
+body {
+  background: #FDF6F0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  animation: fadeInUp 1s ease-out;
+}
+
+/* ---------- Card Styling ---------- */
+.card {
+  border-radius: 20px;
+  background: #FFFFFF;
+  border: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- Form Labels and Inputs ---------- */
+label {
+  font-weight: 600;
+  color: #3E3E3E;
+  margin-bottom: 5px;
+  display: block;
+}
+
+input.form-control {
+  border-radius: 10px;
+  padding: 10px 15px;
+  border: 1px solid #C2B9B0;
+  background-color: #FAF8F6;
+  color: #3E3E3E;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+input.form-control:focus {
+  border-color: #6B4F4F;
+  box-shadow: 0 0 5px rgba(107, 79, 79, 0.5);
+  outline: none;
+}
+
+/* ---------- Button Styling ---------- */
+button.btn-success {
+  background: #7a614d;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: background 0.4s ease, transform 0.2s ease;
+  padding: 10px;
+  color: white;
+}
+
+button.btn-success:hover {
+  background: #6a5543;
+  transform: scale(1.02);
+}
+
+p.text-center, p a{
+    color: #6a5543;
+}
+
+/* ---------- Error Message Styling ---------- */
+.text-danger {
+  font-size: 0.875rem;
+  margin-top: 5px;
+  color: #B00020;
+  animation: shake 0.3s ease;
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  75% { transform: translateX(-3px); }
+  100% { transform: translateX(0); }
+}
