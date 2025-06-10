@@ -1,4 +1,4 @@
 export const environment = {
   huggingfaceToken: '', 
-  production: true
+  production: false
 };
