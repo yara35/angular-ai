@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">📜 Your Summarization History</h2>
+
+  <div *ngIf="history.length === 0" class="alert alert-info text-center">
+    No summaries found. Start summarizing a PDF first!
+  </div>
+
+  <div *ngIf="history.length > 0">
+    <div *ngFor="let item of history" class="card mb-4">
+      <div class="card-header">
+        <strong>Date:</strong> {{ item.date | date:'short' }}
+      </div>
+      <div class="card-body">
+        <p><strong>📝 Original Text:</strong></p>
+        <p class="text-muted" style="white-space: pre-wrap;">{{ item.original }}</p>
+
+        <p><strong>✅ Summary:</strong></p>
+        <p style="white-space: pre-wrap;">{{ item.summary }}</p>
+      </div>
+    </div>
+    <button (click)="clearHistory()" class="btn btn-danger mb-3">🗑️ Clear History</button>
+  </div>
+</div>

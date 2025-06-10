@@ -45,8 +45,7 @@ export class Login {
       }
       const founduser = Existingusers.find((user:any)=> user.email === inputemail && user.password === inputpass);
       if(founduser){
-        this.authservice.login(founduser.email)
-        // localStorage.setItem('currentuser',JSON.stringify(founduser) );        
+        this.authservice.login(founduser.email);
         this.router.navigate(['/aiform']);
       }
       else{

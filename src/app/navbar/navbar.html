@@ -20,13 +20,18 @@
             <i class="bi bi-clock-history me-1"></i> History
           </a>
         </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link text-dark btn" routerLinkActive="active-link" routerLink="/packages">
+            <i class="bi bi-tags me-1"></i> Packages
+          </a>
+        </li>
         <li class="nav-item mx-2" *ngIf="!isLoggedIn">
-          <a class="nav-link text-dark btn" routerLinkActive="active-link" routerLink="/">
+          <a class="nav-link text-dark btn" routerLinkActive="active-link" routerLink="/Login">
             <i class="bi bi-box-arrow-in-right me-1"></i> Login
           </a>
         </li>
         <li class="nav-item mx-2" *ngIf="isLoggedIn">
-          <a class="nav-link text-dark btn" routerLinkActive="active-link" routerLink="/" (click) = 'logout()'>
+          <a class="nav-link text-dark btn" routerLinkActive="active-link" routerLink="/Login" (click) = 'logout()'>
             <i class="bi bi-box-arrow-right me-1"></i> Logout
           </a>
         </li>

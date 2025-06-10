@@ -15,3 +15,41 @@ body {
   color: #343a40;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+.btn-primary {
+  background-color: #B08968;
+  border-color: #EDE0D4;
+}
+.btn-primary:hover {
+  background-color: #7F5539;
+  border-color: #EDE0D4;
+}
+
+.toast-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+  max-width: 300px;
+}
+
+.toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.toast-content button {
+  background-color: #ffc107;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+

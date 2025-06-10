@@ -11,7 +11,8 @@ import { Router ,RouterLink} from '@angular/router';
 })
 
 export class Signup {
-  signupForm!: FormGroup
+  signupForm!: FormGroup;
+
   constructor(private formBuilder: FormBuilder, private router: Router){
     this.signupForm = this.formBuilder.group({
       firstname: ['',[Validators.required, Validators.minLength(3)]],
@@ -36,7 +37,8 @@ export class Signup {
       const newUser = {
         email: this.signupForm.value.email,
         password: this.signupForm.value.password,
-        history: [] 
+        history: [] ,
+        subscribed: false
       };
 
       const existingUsers = JSON.parse(localStorage.getItem('users') || '[]');      
@@ -51,7 +53,7 @@ export class Signup {
       existingUsers.push(newUser);
       localStorage.setItem('users', JSON.stringify(existingUsers));
 
-      this.router.navigate(['/']);
+      this.router.navigate(['/Login']);
     }
 }
 

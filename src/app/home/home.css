@@ -1,0 +1,45 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.landing-hero {
+  padding: 80px 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.landing-hero h1 {
+  color: #9C6644;
+}
+
+.landing-hero p {
+  color: #9C6644;
+}
+
+.btn-lg {
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+}
+
+.btn-primary {
+  background-color: #B08968;
+  border-color: #EDE0D4;
+}
+.btn-primary:hover {
+  background-color: #7F5539;
+  border-color: #EDE0D4;
+}
+
+.btn-outline-secondary {
+  border-color: #DDB892;
+  color: #B08968;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #B08968;
+  color: #ffffff;
+}
