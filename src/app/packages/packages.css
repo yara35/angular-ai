@@ -1,0 +1,45 @@
+body {
+  background-color: #f8f9fa;
+}
+
+.package-card {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.package-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.text-center{
+  color: #7F5539;
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #7F5539;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #B08968;
+}
+
+.btn {
+  font-size: 1rem;
+  padding: 10px 20px;
+  border-radius: 8px;
+  color: black;
+  border: #B08968;
+  background-color: #DDB892;
+}
+
+.btn:hover{
+  
+  border: #B08968;
+  background-color: #7F5539;
+}

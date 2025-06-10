@@ -1,0 +1,8 @@
+ <h2 mat-dialog-title>Upgrade Required</h2>
+    <mat-dialog-content>
+      You reached the limit of free summaries. Please upgrade to continue.
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>No, thanks</button>
+      <button mat-button [mat-dialog-close]="'upgrade'" cdkFocusInitial>Upgrade Now</button>
+    </mat-dialog-actions>
