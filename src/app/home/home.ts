@@ -9,4 +9,6 @@ import { RouterModule } from '@angular/router';
   templateUrl: './home.html',
   styleUrls: ['./home.css'],
 })
-export class HomeComponent {}
+export class HomeComponent {
+  homeimg = "assets/images/homeimg.gif"
+}
