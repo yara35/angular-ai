@@ -1,6 +1,3 @@
-#Live Demo
-https://summarizer-sand.vercel.app/
-
 # QuickPeek
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
@@ -56,6 +53,9 @@ ng e2e
 ```
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+#Live Demo
+https://summarizer-sand.vercel.app/
 
 ## Additional Resources
 
