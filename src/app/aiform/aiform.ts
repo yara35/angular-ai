@@ -9,6 +9,11 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UpgradeDialogComponent } from '../upgrade-dialog-component/upgrade-dialog-component';
 
+import { Auth } from '../AuthService/auth';
+import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { UpgradeDialogComponent } from '../upgrade-dialog-component/upgrade-dialog-component';
+
 
 
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 
@@ -25,6 +30,8 @@ export class Aiform {
   extractedText: string = '';
   summaryText: string = '';
   loading: boolean = false;
+
+constructor(private authservice: Auth, private router: Router,private dialog: MatDialog){}
 
 constructor(private authservice: Auth, private router: Router,private dialog: MatDialog){}
 
@@ -56,7 +63,7 @@ constructor(private authservice: Auth, private router: Router,private dialog: Ma
     const pageText = content.items.map((item: any) => item.str).join(' ');
     fullText += pageText + '\n';
   }
-console.log('Extracted Text:', fullText); // Debug output
+console.log('Extracted Text:', fullText); 
   return fullText;
 }
 
@@ -85,11 +92,13 @@ console.log('Extracted Text:', fullText); // Debug output
     return;
     }
    
+   
     this.loading = true;
     this.summaryText = '';
 
     try {
       this.summaryText = await this.summarizeText(this.extractedText);
+      this.saveToHistory(this.extractedText, this.summaryText);
       this.saveToHistory(this.extractedText, this.summaryText);
     } catch (error) {
       console.error('Error summarizing text:', error);
@@ -101,8 +110,12 @@ console.log('Extracted Text:', fullText); // Debug output
   
   
   
+  
+  
+  
 
 async summarizeText(text: string): Promise<string> {
+  const response = await fetch('https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6', {
   const response = await fetch('https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6', {
   method: 'POST',
   headers: {
@@ -122,12 +135,10 @@ async summarizeText(text: string): Promise<string> {
     throw new Error(`HuggingFace API error: ${data.error}`);
   }
 
-  // HuggingFace returns an array of summaries
   if (Array.isArray(data) && data.length > 0 && data[0].summary_text) {
     return data[0].summary_text.trim();
   }
 
-  // Sometimes it returns directly as object
   if (data.summary_text) {
     return data.summary_text.trim();
   }
@@ -164,12 +175,15 @@ saveToHistory(originalText: string, summaryText: string) {
 downloadSummaryAsPDF() {
   const doc = new jsPDF();
 
-  const lines = doc.splitTextToSize(this.summaryText, 180); // wrap text
-
-  doc.setFontSize(12);
+  const lines = doc.splitTextToSize(this.summaryText, 220); 
+  doc.setFontSize(14);
   doc.text(lines, 10, 10);
 
   doc.save('summary.pdf');
+}
+
+goToPackages() {
+  this.router.navigate(['/packages']);
 }
 
 goToPackages() {
