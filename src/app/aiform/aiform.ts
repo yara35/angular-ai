@@ -9,11 +9,6 @@ import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { UpgradeDialogComponent } from '../upgrade-dialog-component/upgrade-dialog-component';
 
-import { Auth } from '../AuthService/auth';
-import { Router } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
-import { UpgradeDialogComponent } from '../upgrade-dialog-component/upgrade-dialog-component';
-
 
 
 (pdfjsLib as any).GlobalWorkerOptions.workerSrc = 
@@ -30,8 +25,6 @@ export class Aiform {
   extractedText: string = '';
   summaryText: string = '';
   loading: boolean = false;
-
-constructor(private authservice: Auth, private router: Router,private dialog: MatDialog){}
 
 constructor(private authservice: Auth, private router: Router,private dialog: MatDialog){}
 
@@ -77,11 +70,7 @@ console.log('Extracted Text:', fullText);
     const users = JSON.parse(localStorage.getItem('users') || '[]');
     const user = users.find((u: any) => u.email === currentEmail);    
     if (user && user.history.length >= 3 && !user.subscribed) { 
-      // const upgrade = confirm('You reached the limit of free summaries. Upgrade now to continue.');
-
-      // if (upgrade) {
-      //   this.router.navigate(['/packages'])
-      // }
+   
       const dialogRef = this.dialog.open(UpgradeDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
@@ -92,13 +81,11 @@ console.log('Extracted Text:', fullText);
     return;
     }
    
-   
     this.loading = true;
     this.summaryText = '';
 
     try {
       this.summaryText = await this.summarizeText(this.extractedText);
-      this.saveToHistory(this.extractedText, this.summaryText);
       this.saveToHistory(this.extractedText, this.summaryText);
     } catch (error) {
       console.error('Error summarizing text:', error);
@@ -110,12 +97,8 @@ console.log('Extracted Text:', fullText);
   
   
   
-  
-  
-  
 
 async summarizeText(text: string): Promise<string> {
-  const response = await fetch('https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6', {
   const response = await fetch('https://api-inference.huggingface.co/models/sshleifer/distilbart-cnn-12-6', {
   method: 'POST',
   headers: {
@@ -162,7 +145,6 @@ saveToHistory(originalText: string, summaryText: string) {
     summary: summaryText
   };
 
-  // Push to the user's history array
   users[userIndex].history = users[userIndex].history || [];
   users[userIndex].history.push(newEntry);
 
@@ -180,10 +162,6 @@ downloadSummaryAsPDF() {
   doc.text(lines, 10, 10);
 
   doc.save('summary.pdf');
-}
-
-goToPackages() {
-  this.router.navigate(['/packages']);
 }
 
 goToPackages() {
